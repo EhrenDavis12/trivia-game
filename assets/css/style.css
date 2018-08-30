@@ -1,0 +1,65 @@
+:root{
+    --textColor: white;
+    --headerColor: white;
+    --backgroundColor: rgba(0, 0, 0, 0.5);;
+    --font-family: 'Sawarabi Mincho', sans-serif;
+    --battleWin: rgb(21, 255, 0);
+    --battleLose: red;
+    --borderColor: rgb(134, 183, 255);
+}
+
+.jumbotron,  #startGame, .option, 
+#question, #questionTimer
+{
+    color: var(--headerColor);
+    background-color: var(--backgroundColor);
+    border-color: var(--borderColor);
+    text-align: center;
+    border-width: .1em;
+    border-style: solid;
+    font-size: 2em;
+}
+
+.jumbotron{
+    border-style: double;
+    border-width: 1em;
+    font-size: 1em;
+}
+
+.option{
+    font-size: 1em;
+    margin-right: 1em;
+}
+
+#optionsGroup{
+    margin-bottom: 5em;
+}
+
+
+
+body{
+    background-color: var(--backgroundColor);
+    color: var(--textColor);
+    font-family: var(--font-family);
+    background-image: url("/assets/worldImages/woldBkg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+img{
+    height: 100%;
+    width: 100%;
+}
+
+.row{
+    margin-top: 2em;
+    /* margin-bottom: 2em; */
+}
+footer{
+    margin-top: 2em;
+    text-align: right;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
