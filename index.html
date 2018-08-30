@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Trivia-Game</title>
+    <link rel="stylesheet" href="./assets/css/reset.css" />
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" /> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Sawarabi+Mincho" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/style.css" />
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="jumbotron">
+                    <h1 class="jumboWords"></h1>
+                </div>
+            </div>
+        </div>
+
+        <div id="startGame-row" class="row justify-content-center">
+            <div id="startGame" class="col-md-8 btn"></div>
+        </div>
+
+        <div id="questionsRightResult-row" class="row justify-content-center">
+            <div id="questionsRightResult" class="col-md-8"></div>
+        </div>
+
+        <div id="questionsWrongResult-row" class="row justify-content-center">
+            <div id="questionsWrongResult" class="col-md-8"></div>
+        </div>
+
+        <div id="questionsUnansweredResult-row" class="row justify-content-center">
+            <div id="questionsUnansweredResult" class="col-md-8"></div>
+        </div>
+
+        <div id="questionTimer-row" class="row justify-content-center">
+            <div id="questionTimer" class="col-md-8"></div>
+        </div>
+
+        <div id="question-row" class="row justify-content-center">
+            <div id="question" class="col-md-8"></div>
+        </div>
+
+        <div id="optionsGroup">
+            <div class="row justify-content-center">
+                <div id="option1" class="btn option" class="col-md-6 btn" value=1></div>
+                <div id="option2" class="btn option" class="col-md-6 btn" value=2></div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div id="option3" class="btn option" class="col-md-6 btn" value=3></div>
+                <div id="option4" class="btn option" class="col-md-6 btn" value=4></div>
+            </div>
+        </div>
+        
+        <footer>By Ehren Daivs</footer>
+
+    </div>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="./assets/java/classObj.js"></script>
+    <script src="./assets/java/questions.js"></script>
+    <script src="./assets/java/setupGameWorld.js"></script>
+</body>
+
+</html>
