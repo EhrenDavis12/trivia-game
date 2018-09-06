@@ -26,16 +26,14 @@
             <div id="startGame" class="col-md-8 btn"></div>
         </div>
 
-        <div id="questionsRightResult-row" class="row justify-content-center">
-            <div id="questionsRightResult" class="col-md-8"></div>
-        </div>
-
-        <div id="questionsWrongResult-row" class="row justify-content-center">
-            <div id="questionsWrongResult" class="col-md-8"></div>
-        </div>
-
-        <div id="questionsUnansweredResult-row" class="row justify-content-center">
-            <div id="questionsUnansweredResult" class="col-md-8"></div>
+        <div id="statCard" class="card">
+            <div class="card-body">
+                <h4 class="card-title">Results: </h4>
+                <p id="totalTime" class="card-text"></p>
+                <p id="questionsRightResult" class="card-text"></p>
+                <p id="questionsWrongResult" class="card-text"></p>
+                <p id="questionsUnansweredResult" class="card-text"></p>
+            </div>
         </div>
 
         <div id="questionTimer-row" class="row justify-content-center">
@@ -64,6 +62,7 @@
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="./assets/java/classObj.js"></script>
+    <script src="./assets/java/htmlDisplayHandler.js"></script>
     <script src="./assets/java/questions.js"></script>
     <script src="./assets/java/setupGameWorld.js"></script>
 </body>

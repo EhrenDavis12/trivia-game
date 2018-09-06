@@ -3,13 +3,15 @@
     --headerColor: white;
     --backgroundColor: rgba(0, 0, 0, 0.5);;
     --font-family: 'Sawarabi Mincho', sans-serif;
-    --battleWin: rgb(21, 255, 0);
-    --battleLose: red;
+    --rightAnswer: rgb(21, 255, 0);
+    --wrongAnswer: red;
     --borderColor: rgb(134, 183, 255);
+    --cardBkgColor: moccasin;
+    --cardTextColor: black;
 }
 
 .jumbotron,  #startGame, .option, 
-#question, #questionTimer
+#question, #questionTimer, .card
 {
     color: var(--headerColor);
     background-color: var(--backgroundColor);
@@ -51,15 +53,15 @@ img{
     width: 100%;
 }
 
-.row{
+.row, .card{
     margin-top: 2em;
     /* margin-bottom: 2em; */
 }
 footer{
     margin-top: 2em;
-    text-align: right;
+    text-align: right;/* 
     position: fixed;
     left: 0;
-    bottom: 0;
+    bottom: 0; */
     width: 100%;
 }

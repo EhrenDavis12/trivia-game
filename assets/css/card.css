@@ -1,0 +1,29 @@
+
+.card{
+    height: 200px;
+    background-color: var(--cardBkgColor);
+    color: var(--cardTextColor);/* 
+    border-width: 1em;
+    border-style: ridge;
+    border-color: var(--borderColor); */
+}
+/* .card-body{
+
+}
+.card-body-character{
+    
+}
+.card-img-top{
+
+} */
+
+.card-title{
+    text-align: center;
+}
+
+.card-subtitle{
+    margin-left: 20px;
+}
+.card-text{
+    margin-left: 20px;
+}
