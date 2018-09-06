@@ -3,6 +3,8 @@ var htmlDisplayHandler = {
     displayWorld: {
         jumboWords: ".jumboWords",
         startGame: "#startGame",
+        category: "#category",
+        difficulty: "#difficulty",
         questionTimer: "#questionTimer",
         resultCard: "#statCard",
         totalTime: "#totalTime",
@@ -25,6 +27,7 @@ var htmlDisplayHandler = {
 
     displayWorldRow: {
         startGameRow: "#startGame-row",
+        startGameOptionsRow: "#startGameOptions-row",
         resultCard: "#statCard",
         questionTimerRow: "#questionTimer-row",
         questionRow: "#question-row",
@@ -33,12 +36,22 @@ var htmlDisplayHandler = {
 
     mainStartView: function (jumboTitle, startMessage) {
         htmlDisplayHandler.hideGameElements();
-        $(htmlDisplayHandler.displayWorld.jumboWords).text(jumboTitle);
+        htmlDisplayHandler.jumboWordsCategory();
         $(htmlDisplayHandler.displayWorld.startGame).text(startMessage);
+
+        $(htmlDisplayHandler.displayWorldRow.startGameRow).show();
+        $(htmlDisplayHandler.displayWorldRow.startGameOptionsRow).show();
+    },
+
+    jumboWordsCategory: function (){
+        $(htmlDisplayHandler.displayWorld.jumboWords).text(
+            $(htmlDisplayHandler.displayWorld.category).text() + messagesDictionary.jumboTitle
+        );
     },
 
     startQuestionsView: function () {
         $(htmlDisplayHandler.displayWorldRow.startGameRow).hide();
+        $(htmlDisplayHandler.displayWorldRow.startGameOptionsRow).hide();
         $(htmlDisplayHandler.displayWorldRow.resultCard).hide();
         $(htmlDisplayHandler.displayWorldRow.questionTimerRow).show();
         $(htmlDisplayHandler.displayWorldRow.questionRow).show();
@@ -82,11 +95,11 @@ var htmlDisplayHandler = {
     },
 
     showAnswer: function (rightAnswerIndex, chosenAnswerIndex) {
-        $(htmlDisplayHandler.displayWorld.options[rightAnswerIndex-1]).css('border-color', "var(--rightAnswer)");
-        if (chosenAnswerIndex !== rightAnswerIndex){
-            $(htmlDisplayHandler.displayWorld.options[chosenAnswerIndex-1]).css('border-color', "var(--wrongAnswer)");
+        $(htmlDisplayHandler.displayWorld.options[rightAnswerIndex - 1]).css('border-color', "var(--rightAnswer)");
+        if (chosenAnswerIndex !== rightAnswerIndex) {
+            $(htmlDisplayHandler.displayWorld.options[chosenAnswerIndex - 1]).css('border-color', "var(--wrongAnswer)");
         }
-        
+
     },
 
     clearAnswerBoarder: function () {

@@ -1,10 +1,10 @@
 
-var questionRunTime = 4;
+var questionRunTime = 30;
 var countDownNumber;
 var intervalId = 0;
 
 var messagesDictionary = {
-    jumboTitle: "Mythology Trivia!",
+    jumboTitle: " Trivia!",
     startGame: "Click to start your game!",
     selectCharacter: "Seconds on the clock: ",
     questionsRight: "Questions answered correctly: ",

@@ -1,18 +1,22 @@
 
 function getQuestionsAPI() {
     $(htmlDisplayHandler.displayWorldRow.startGameRow).hide();
-    /* $.ajax({
-        url: "https://opentdb.com/api.php?amount=10&category=20&difficulty=easy&type=multiple",
+    var category = mapCategory($("#category").text());
+    var difficulty = mapDifficulty($("#difficulty").text());
+    var callURL = "https://opentdb.com/api.php?amount=10&category="+category+"&difficulty="+difficulty+"&type=multiple";
+    $.ajax({
+        /* url: "https://opentdb.com/api.php?amount=10&category=20&difficulty=easy&type=multiple", */
+        url: callURL,
         method: "GET"
     }).then(function (response) {
         populateQuestionsArray(response.results);
-        $(displayWorldRow.startGameRow).show();
+        startGame();
         console.log(response.results);
-    }); */
+    });
 
-    var runSampleResult = getSample();
-    populateQuestionsArray(runSampleResult.results);
-    $(htmlDisplayHandler.displayWorldRow.startGameRow).show();
+    /* var runSampleResult = getSample();
+    populateQuestionsArray(runSampleResult.results); 
+    startGame();*/
 }
 
 
@@ -86,4 +90,24 @@ function cleanStringHTML(word) {
     word = word.replace(/&nbsp;/g, " ");
 
     return word;
+}
+
+function mapCategory(category){
+    if (category === "Mythology")
+        return "20";
+    else if (category === "History")
+        return "23";
+    else if (category === "Geography")
+        return "22";
+    return "20";
+}
+
+function mapDifficulty(difficulty){
+    if (difficulty === "Easy")
+        return "easy";
+    else if (difficulty === "Medium")
+        return "medium";
+    else if (difficulty === "Hard")
+        return "hard";
+    return "easy";
 }

@@ -5,19 +5,31 @@ $(document).ready(function () {
     setUpFirstTimeStartWindow()
 
     $(document).on("click", htmlDisplayHandler.displayWorld.startGame, function () {
-        startGame();
+        getQuestionsAPI();
     });
 
     $(document).on("click", htmlDisplayHandler.displayWorld.btnAnswerClass, function (){
         handlePlayerAnswer($(this).attr("value"));
     });
+
+    $(".category-menu a").click(function(e){
+        e.preventDefault(); // cancel the link behaviour
+        var selText = $(this).text();
+        $("#category").text(selText);
+        htmlDisplayHandler.jumboWordsCategory();
+    });
+
+    $(".difficulty-menu a").click(function(e){
+        e.preventDefault(); // cancel the link behaviour
+        var selText = $(this).text();
+        $("#difficulty").text(selText);
+    });
 });
 
 function setUpFirstTimeStartWindow() {
     htmlDisplayHandler.mainStartView(
-        messagesDictionary.jumboTitle,
+        $(htmlDisplayHandler.displayWorld.category).text() + messagesDictionary.jumboTitle,
         messagesDictionary.startGame);
-    getQuestionsAPI();
 }
 
 function startGame() {
