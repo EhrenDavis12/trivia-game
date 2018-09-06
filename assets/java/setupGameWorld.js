@@ -1,52 +1,88 @@
 
 
-$(document).ready(setUpFirstTimeStartWindow());
+$(document).ready(function () {
 
-$(document).on("click", displayWorld.startGame, function () {
-    startGame();
-});
+    setUpFirstTimeStartWindow()
 
-$(document).on("click", displayWorld.btnAnswerClass, function () {
-    if ($(this).attr("value") === $(displayWorld.question).attr("value")) {
-        alert("correct");
-    } else {
-        alert("wrong");
-    }
-    setUpQuestion();
+    $(document).on("click", htmlDisplayHandler.displayWorld.startGame, function () {
+        getQuestionsAPI();
+    });
+
+    $(document).on("click", htmlDisplayHandler.displayWorld.btnAnswerClass, function (){
+        handlePlayerAnswer($(this).attr("value"));
+    });
+
+    $(".category-menu a").click(function(e){
+        e.preventDefault(); // cancel the link behaviour
+        var selText = $(this).text();
+        $("#category").text(selText);
+        htmlDisplayHandler.jumboWordsCategory();
+    });
+
+    $(".difficulty-menu a").click(function(e){
+        e.preventDefault(); // cancel the link behaviour
+        var selText = $(this).text();
+        $("#difficulty").text(selText);
+    });
 });
 
 function setUpFirstTimeStartWindow() {
-    hideAllGameElements();
-    $(displayWorld.jumboWords).text(messagesDictionary.jumboTitle);
-    $(displayWorld.startGame).text(messagesDictionary.startGame);
-    $(displayWorldRow.startGameRow).show();
-    getQuestionsAPI();
-
-}
-
-function hideAllGameElements() {
-    $.each(displayWorldRow, function (key, value) {
-        $(value).hide();
-    });
+    htmlDisplayHandler.mainStartView(
+        $(htmlDisplayHandler.displayWorld.category).text() + messagesDictionary.jumboTitle,
+        messagesDictionary.startGame);
 }
 
 function startGame() {
-    $(displayWorldRow.startGameRow).hide();
-    setUpQuestion();
-    $(displayWorldRow.questionTimerRow).show();
-    $(displayWorldRow.questionRow).show();
-    $(displayWorldRow.optionsGroup).show();
+    htmlDisplayHandler.startQuestionsView();
+    controlQuestionFlow(0);
+}
+
+function handlePlayerAnswer(chosenValue) {
+    var answerIndex = $(htmlDisplayHandler.displayWorld.question).attr("value");
+    if (chosenValue === answerIndex) {
+        results.correctCount++;
+    } else {
+        results.wrongCount++;
+    }
+    results.totalTime += (questionRunTime - countDownNumber);
+    htmlDisplayHandler.showAnswer(answerIndex, chosenValue);
+    controlQuestionFlow();
+}
+
+function controlQuestionFlow(timeDelay = 1000) {
+    htmlDisplayHandler.disableAllButtons();
+    if (arrayOfQuestions.length > 0) {
+        delayOneSecond(function () {
+            setUpQuestion();
+            startCountDownTimer();
+            htmlDisplayHandler.enableAllButtons();
+            htmlDisplayHandler.clearAnswerBoarder();
+        }, timeDelay);
+    } else {
+        delayOneSecond(function () {
+            setUpFirstTimeStartWindow();
+            showResults();
+            htmlDisplayHandler.enableAllButtons();
+            htmlDisplayHandler.clearAnswerBoarder();
+        }, timeDelay);
+    }
 }
 
 function setUpQuestion() {
     var questionObj = getRandomOneTimeQuestion();
-    $(displayWorld.question).text(questionObj.question);
-    $(displayWorld.question).attr("value", questionObj.answer);
-    $(displayWorld.option1).text(questionObj.option1);
-    $(displayWorld.option2).text(questionObj.option2);
-    $(displayWorld.option3).text(questionObj.option3);
-    $(displayWorld.option4).text(questionObj.option4);
-    startCountDownTimer();
+    htmlDisplayHandler.setUpQuestionView(questionObj);
+}
+
+function showResults() {
+    htmlDisplayHandler.showResults();
+    resetResultsCard();
+}
+
+function resetResultsCard() {
+    results.correctCount = 0;
+    results.wrongCount = 0;
+    results.unansweredCount = 0;
+    results.totalTime = 0;
 }
 
 function getRandomOneTimeQuestion() {
@@ -61,15 +97,24 @@ function randomNumber(min, max) {
 }
 
 function startCountDownTimer() {
-    countDownNumber = 20;
-    $(displayWorld.questionTimer).text(messagesDictionary.timeCountDown + countDownNumber);
+    countDownNumber = questionRunTime;
+    htmlDisplayHandler.setQuestionTimer(messagesDictionary.timeCountDown + countDownNumber);
     clearInterval(intervalId);
     intervalId = setInterval(function () {
         countDownNumber--;
         if (countDownNumber < 1) {
-            alert("done");
-            setUpQuestion();
+            results.totalTime += questionRunTime;
+            results.unansweredCount++;
+            controlQuestionFlow();
         }
-        $(displayWorld.questionTimer).text(messagesDictionary.timeCountDown + countDownNumber);
+        htmlDisplayHandler.setQuestionTimer(messagesDictionary.timeCountDown + countDownNumber);
     }, 1000);
+}
+
+function delayOneSecond(func, timeDelay) {
+    clearInterval(intervalId);
+    intervalId = setInterval(function () {
+        clearInterval(intervalId);
+        func();
+    }, timeDelay);
 }
