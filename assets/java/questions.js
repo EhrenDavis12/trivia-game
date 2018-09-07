@@ -72,6 +72,7 @@ function getRandomizedOptions(correct_answer, incorrect_answers) {
 }
 
 function setUpSingleQuestion(question, scrambledAnswers){
+    scrambledAnswers = cleanStringArray(scrambledAnswers);
     return question = {
         question: cleanStringHTML(question),
         option: scrambledAnswers,
@@ -79,22 +80,28 @@ function setUpSingleQuestion(question, scrambledAnswers){
     };
 }
 
+function cleanStringArray(arrayToClean){
+    $.each(arrayToClean, function (key, value) {
+        arrayToClean[key] = cleanStringHTML(value);;
+    });
+    return arrayToClean;
+}
+
 function cleanStringHTML(word) {
-
-    word = word.replace(/&#039;/g, "\'");
-    word = word.replace(/&quot;/g, "\"");
-    word = word.replace(/&apos;/g, "\'");
-    word = word.replace(/&amp;/g, "&");
-    word = word.replace(/&lt;/g, "<");
-    word = word.replace(/&gt;/g, ">");
-    word = word.replace(/&nbsp;/g, " ");
-
-    return word;
+    let returnWord = word.toString();
+    returnWord = returnWord.replace(/&#039;/g, "\'");
+    returnWord = returnWord.replace(/&quot;/g, "\"");
+    returnWord = returnWord.replace(/&apos;/g, "\'");
+    returnWord = returnWord.replace(/&amp;/g, "&");
+    returnWord = returnWord.replace(/&lt;/g, "<");
+    returnWord = returnWord.replace(/&gt;/g, ">");
+    returnWord = returnWord.replace(/&nbsp;/g, " ");
+    return returnWord;
 }
 
 function mapCategory(category){
-    if (category === "Mythology")
-        return "20";
+    if (category === "Japanese Anime & Manga")
+        return "31";
     else if (category === "History")
         return "23";
     else if (category === "Geography")
