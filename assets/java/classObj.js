@@ -14,7 +14,7 @@ var messagesDictionary = {
     cardCorrectCount: "Answered Right: ",
     cardWrongCount: "Answered Wrong: ",
     cardUnAnsweredCount: "UnAnswered: ",
-    cardTotalTime: "Total seconds count: ",
+    cardTotalTime: "Total seconds count: "
 }
 
 var results = {

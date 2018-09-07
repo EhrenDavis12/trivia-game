@@ -11,7 +11,7 @@
 }
 
 .jumbotron,  #startGame, .option, 
-#question, #questionTimer, .card
+#question, #questionTimer, .card, #category, #difficulty
 {
     color: var(--headerColor);
     background-color: var(--backgroundColor);
@@ -55,14 +55,10 @@ img{
 
 .row, .card{
     margin-top: 2em;
-    /* margin-bottom: 2em; */
 }
 footer{
     margin-top: 2em;
-    text-align: right;/* 
-    position: fixed;
-    left: 0;
-    bottom: 0; */
+    text-align: right;
     width: 100%;
 }
 
