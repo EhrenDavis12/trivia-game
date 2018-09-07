@@ -1,3 +1,4 @@
+var arrayOfQuestions = [];
 
 function getQuestionsAPI() {
     $(htmlDisplayHandler.displayWorldRow.startGameRow).hide();
@@ -53,8 +54,6 @@ function getSample (){
     return sample;
 }
 
-
-var arrayOfQuestions = [];
 function populateQuestionsArray(apiResult) {
     arrayOfQuestions = [];
     apiResult.forEach(element => {
