@@ -41,6 +41,7 @@ var htmlDisplayHandler = {
 
         $(htmlDisplayHandler.displayWorldRow.startGameRow).show();
         $(htmlDisplayHandler.displayWorldRow.startGameOptionsRow).show();
+        $('body').css('background-image', 'url(./assets/worldImages/woldBkg.jpg)');
     },
 
     jumboWordsCategory: function (){
