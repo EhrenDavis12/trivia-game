@@ -75,7 +75,7 @@ function setUpSingleQuestion(question, scrambledAnswers){
     return question = {
         question: cleanStringHTML(question),
         option: scrambledAnswers,
-        answer: (scrambledAnswers[4] + 1)
+        answer: (parseInt(scrambledAnswers[4]) + 1)
     };
 }
 
